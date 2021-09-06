@@ -6,20 +6,25 @@ export default function TextForm(props) {
     const handleUpClick=()=>{
         let newText = text.toUpperCase().trim();
         setText(newText);
+        props.showAlert("Converted to Uppercase","success")
     }
     const handleLowClick=()=>{
         let newText = text.toLowerCase().trim();
         setText(newText);
+        props.showAlert("Converted to Lowercase","success")
     }
     const handleClearClick=()=>{
         let newText = '';
         setText(newText);
+        props.showAlert("Cleared the text","success")
     }
-
+    
     const handleCopyClick = () => {
         let text = document.getElementById("myBox");
         text.select();
         navigator.clipboard.writeText(text.value);
+        props.showAlert("Copied to Clipboard","success")
+
 
 
     }
@@ -33,9 +38,9 @@ export default function TextForm(props) {
         <>
         <div className='container' style={{color:props.mode==='dark'?'white':'black'}}>
             <h1>{props.heading}</h1> 
-            
+ 
             <div className="mb-3">
-                <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor:props.mode==='dark'?'grey':'white',color:props.mode==="dark"?'white':'black'}} id="myBox" rows="8"></textarea>
+                <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor:props.mode==='dark'?'#212529':'white',color:props.mode==="dark"?'white':'black',border:props.mode==='dark'?'2px solid white':'2px solid black'}} id="myBox" rows="8"></textarea>
             </div>
             <button className="btn btn-primary mx-1" onClick={handleUpClick} >Convert to UpperCase</button>
             <button className="btn btn-primary mx-1" onClick={handleLowClick} >Convert to LowerCase</button>
