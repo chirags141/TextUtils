@@ -7,8 +7,7 @@ import Alert from './components/Alert';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 
@@ -25,7 +24,7 @@ function App() {
 
     setTimeout (()=>{
       setAlert(null)
-    },1500)
+    },2000)
   }
 
   const toggleMode = ()=>{
@@ -50,10 +49,10 @@ function App() {
     <div className="container my-3">
       <Switch>
           <Route exact path="/about">
-            <About />
+            <About  mode={mode}/>
           </Route>
           <Route exact path="/">
-            <TextForm heading="Enter the text to analyze" showAlert = {showAlert} mode={mode}/> 
+            <TextForm heading="Try TextUtils - word counter, character counter" showAlert = {showAlert} mode={mode}/> 
           </Route>
       </Switch>
 
